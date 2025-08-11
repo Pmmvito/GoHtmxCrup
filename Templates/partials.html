@@ -1,0 +1,60 @@
+{{define "bloco-login"}}
+<div class="card shadow-sm p-4">
+    <h5 class="mb-3">Login</h5>
+    <div id="login-response"></div>
+    <form hx-post="/bloco-login" hx-target="#login-response" hx-swap="innerHTML">
+        <div class="mb-3">
+            <label for="login-email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="login-email" name="email" autocomplete="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="login-password" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="login-password" name="password" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Entrar</button>
+    </form>
+</div>
+{{end}}
+
+{{define "bloco-register"}}
+<div class="card shadow-sm p-4">
+    <h5 class="mb-3">Registrar</h5>
+    <div id="register-response"></div>
+    <form hx-post="/bloco-register" hx-target="#register-response" hx-swap="innerHTML">
+        <div class="mb-3">
+            <label for="register-name" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="register-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="register-email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="register-email" name="email" autocomplete="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="register-password" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="register-password" name="password" autocomplete="new-password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Registrar</button>
+    </form>
+</div>
+{{end}}
+{{define "formulario"}}
+<div class="card shadow-sm">
+    <div class="card-header">
+        <h5 class="mb-0">Novo Formulário</h5>
+    </div>
+    <div class="card-body">
+        <form hx-post="/salvar-form" hx-target="#lista-forms" hx-swap="innerHTML">
+            <input type="hidden" name="email" value="{{.Usuario.Email}}">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome do Formulário</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome" required>
+            </div>
+            <div class="mb-3">
+                <label for="texto" class="form-label">Conteúdo</label>
+                <textarea class="form-control" id="texto" name="texto" rows="4" placeholder="Digite seu texto..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Salvar Formulário</button>
+        </form>
+    </div>
+</div>
+{{end}}
